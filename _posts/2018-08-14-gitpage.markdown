@@ -1,0 +1,18 @@
+---
+layout:		post
+title:		开篇
+subtitle:       测试
+author:		larryzju
+catalog:	true
+tags:		web
+---
+
+# 测试
+
+> It just Works!
+
+# 说明
+
+本页面样式 fork 自 [Huxpro/huxpro.github.io](https://github.com/Huxpro/huxpro.github.io)
+
+由于 doobby 是一个团队，去掉了页面中相关的外部链接，删除了个人作品展示 portfolio
