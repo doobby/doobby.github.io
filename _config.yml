@@ -61,7 +61,7 @@ ga_domain: huangxuan.me
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "A FUN GROUP CONSIST OF BUNCH OF DOOBBIERS"
+sidebar-about-description: "A FUN GROUP CONSISTS OF BUNCH OF DOOBBIERS"
 sidebar-avatar: /img/avatar_doobby_geek.jpeg  # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
