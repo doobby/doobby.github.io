@@ -13,10 +13,7 @@ future: true
 
 # SNS settings
 RSS: false
-github_username:    huxpro
-#facebook_username:  huxpro
-#linkedin_username:  firstname-lastname-idxxxx
-
+github_username:    doobby
 
 
 # Build settings
