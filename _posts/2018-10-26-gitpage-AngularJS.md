@@ -50,30 +50,14 @@ AngularJS的表达式可以包含文字，运算符和变量
 #### AngualarJS的指令
 **干啥的？** --> 扩展html的属性。
 **长啥样？** --> 前面都有"ng-"前缀
-**都有哪些常用的** --> 例子如下
 
 1. ng-app：声明AngularJS所管辖的区域，指定了应用程序的根元素，一般写在html标签上或者body里,原则上一个页面只能有一个。
-
-`<body ng-app=""></body>`
-
-
-2. ng-model：把元素值绑定到应用程序的变量上。
-
-```<div ng-app="" ng-init="firstName='John'">
-     <p>在输入框中尝试输入：</p>
-     <p>姓名：<input type="text" ng-model="firstName"></p>
-     <p>你输入的为： {{firstName }}</p>
-</div>
-```
-小理解：感觉就是ng-model会赋予某个元素（比如输入框<input>）一个变量，告诉你输入的值就是这个变量的值，之后也可以把这个变量用到其他地方。
-
-
-3.ng-bind：把程序的值输出到html页面。（感觉和ng-model听起来差不多。。。待搞懂）
-
-```<p ng-bind="5+5+'Angular'"></p>	
-```
-
-4.ng-repeat：重复一个html元素。
+2. ng-model：把元素值绑定到应用程序的变量上。小理解：感觉就是ng-model会赋予某个元素（比如输入框<input>）一个变量，告诉你输入的值就是这个变量的值，之后也可以把这个变量用到其他地方。
+3. ng-bind：把程序的值输出到html页面。（感觉和ng-model听起来差不多。。。待搞懂）
+4. ng-repeat：遍历集合中（数组中）的每个项，给每个元素生成实例，还可以在遍历后过滤或者排序
+5. ng-controller：为应用定义控制器对象
+6. ng-class：动态绑定css类
+7. ng-style：动态自定义dom元素的css（和ng-class有啥区别）
 
 
 
