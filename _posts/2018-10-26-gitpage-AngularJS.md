@@ -6,9 +6,6 @@ author: rbw
 ---
 
 
-#
-
-
 ### 前言
 
 此学习总结完全是新手探索，但也不能直接从头开始因为没时间，所以如果看出差错请发我邮箱1522467044@qq.com
@@ -61,14 +58,12 @@ AngularJS的表达式可以包含文字，运算符和变量
 ```
 
 2. ng-model：把元素值绑定到应用程序的变量上。
-`<div ng-app="" ng-init="firstName='John'">`
+```<div ng-app="" ng-init="firstName='John'">
      <p>在输入框中尝试输入：</p>
      <p>姓名：<input type="text" ng-model="firstName"></p>
      <p>你输入的为： {{firstName }}</p>
-`</div>`
-
-突然发现md支持html语法，懒得标注成代码块了，这个例子就是讲通过ng-model把你要输入的值与表达式的变量firstname绑定，你输入什么就显示什么。
-
+</div>
+```
 小理解：感觉就是ng-model会赋予某个元素（比如输入框<input>）一个变量，告诉你输入的值就是这个变量的值，之后也可以把这个变量用到其他地方。
 
 
