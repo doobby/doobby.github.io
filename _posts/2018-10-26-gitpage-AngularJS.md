@@ -54,10 +54,11 @@ AngularJS的表达式可以包含文字，运算符和变量
 
 1. ng-app：声明AngularJS所管辖的区域，指定了应用程序的根元素，一般写在html标签上或者body里,原则上一个页面只能有一个。
 
-```<body ng-app=""></body>
-```
+`<body ng-app=""></body>`
+
 
 2. ng-model：把元素值绑定到应用程序的变量上。
+
 ```<div ng-app="" ng-init="firstName='John'">
      <p>在输入框中尝试输入：</p>
      <p>姓名：<input type="text" ng-model="firstName"></p>
