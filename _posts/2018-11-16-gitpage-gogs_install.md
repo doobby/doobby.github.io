@@ -40,6 +40,7 @@ services:
     restart: always
     ports:
       - "322:22"
+#3#   - "3038：3038"  
       - "3000:3000"
     volumes:
       - app_data:/data
@@ -72,10 +73,10 @@ networks:
 
   <!-- 因为是docker环境，按照配置gogsapp是一个容器，gogsdb是一个容器，这里有两个选择 1 要不填主机IP+port 2 要不填gogsdb容器IP+port -->  
 
-## A1：使用docker自带DNS功能  
+## A1：使用docker(自带DNS功能? ❌)  
 
 1. gogsapp怎么访问主机IP？可以查看主机docker内部网络IP输入，但是启动关闭容器都可能导致ip变化，不靠谱放弃。
-2. 学习docker网络，发现docker自带DNS功能命名 从gogsapp容器ping gogsdb完美通畅，那就填gogsdb:3306。
+2. 学习docker网络，发现docker自带DNS功能命名 从gogsapp容器ping gogsdb完美通畅(目前没搞明白，桥接网络可能在配置了hosts，没确认)，那就填gogsdb:3306。
 
 ![gogs_pingdb](/img/gogs_pingdb.png)
 
@@ -362,6 +363,35 @@ mysql> source gogs_data.sql
 4. docker-compose up -d
 5. 去mysql容器恢复gogs数据库，去gogsapp容器恢复仓库数据文件和配置app.ini
 6. docker-compose restart 一切如初。
+
+
+
+## Q5: 如何开启个人密钥免密码远端推送？
+
+## A5: ssh协议可加密钥，http方式只能在客户端实现
+
+先说下折腾的情况，按照上面docker-compose.yml默认建的gogs配置并没有开启sshserver端的服务，但是可以在页面上传个人公钥，而使用ssh协议克隆版本库是失败的（之前忽视一直用的是http）,用苹果笔记本，默默的拉取推送，在第一次送后需要输入用户和密码，后面就不需要输入了，还以为密钥配置成功，哎，学习理解不到位的bug，然后在linux/win系统就是不行。仔细查阅资料才大概了解清楚。
+
+[git凭证工具](https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage)
+
+看明白了上面的官方说明git tools下的凭证说明，如果还是想使用ssh就修改下面的配置：
+
+#### gogs开启 ssh服务
+
+```shell
+[server]
+DOMAIN           = localhost
+HTTP_PORT        = 3000
+ROOT_URL         = http://localhost:3000/
+DISABLE_SSH      = false
+SSH_PORT         = 3038    ## docker安装下22端口会冲突  建议修改为其他端口同时不变映射到主机端口docker-compose.yml  开启#3#
+START_SSH_SERVER = true   ## 这个配置为true
+OFFLINE_MODE     = false
+```
+
+然后重启gogs服务，上传自己的公钥，使用ssh方式克隆拉取推送就可以免密玩耍了。
+
+
 
 # 总结
 
