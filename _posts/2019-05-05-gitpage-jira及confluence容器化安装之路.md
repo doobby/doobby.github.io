@@ -188,7 +188,6 @@ networks:
      ipam:
           config:
           - subnet: 172.23.0.0/16
-              gateway: 172.23.0.1
 ```
 
 
@@ -209,17 +208,21 @@ networks:
 #### docker-compose 启动
 
 在compose文件对应目录启动  
+
 `docker-compose up -d`
 
 #### 添加数据库用户及库表
 
 **注意**：上述compose文件配置中数据库只建立了jira用户相关的权限及库表，还需要手动添加confluence的用户权限及库，当然如果你会更改dockerfile打包自己的镜像直接建立也挺好
 
-’‘’
-填写 postgres 添加用户和库方法
+```
+
+# 填写 postgres 添加用户和库方法
+
+```
 
 
-‘’‘
+
 
 #### jira页面安装
 
@@ -295,7 +298,7 @@ docker network connect  docker_jira_confluence_jiranet mail --ip 172.23.0.4
 
 需要将mail容器使用的TLS证书导入到jira和confluence容器里面，这个其实是由容器里面JDK添加配置的
 
-1.导出mail认证证书 使用openssl程序查出对应证书
+1 导出mail认证证书 使用openssl程序查出对应证书
 
 ```bash
 # openssl s_client -connect localhost:465
@@ -382,13 +385,15 @@ SSL-Session:
 
 拷贝 begin到end行保存为  public.cert文件
 
-2. 在容器中导入该证书
+
+
+2 在容器中导入该证书
 
   ```bash
    # 找到jira及confluence使用的jdk所在目录，找到keytool工具导入
   keytool -import -alias dzwl -keystore ../lib/security/cacerts -file /tmp/public.crt
   ```
-3. 重启容器
+3 重启容器
 
 
 
